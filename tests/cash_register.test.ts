@@ -96,3 +96,25 @@ describe('Check if cash register gives right output', () => {
     expect(result).toBe(expectedResult)
   })
 })
+
+describe('Check if cash register prints', () => {
+  let register = new CashRegister()
+  const input = '1 imported bottle of perfume at 27.99'
+
+  let products = parseProducts(input)
+  register.resetCashRegister()
+  register.addProducts(products)
+
+  test('right sale taxes', () => {
+    const expectedResult = 4.2
+    expect(register.saleTaxes).toBe(expectedResult)
+  })
+  test('right total', () => {
+    const expectedResult = 32.19
+    expect(register.total).toBe(expectedResult)
+  })
+  test('right product list', () => {
+    const expectedResult = '1 imported bottle of perfume: 32.19'
+    expect(register.makeProductList()[0]).toBe(expectedResult)
+  })
+})

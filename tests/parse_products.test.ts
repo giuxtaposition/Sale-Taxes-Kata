@@ -1,6 +1,3 @@
-import checkImported from '../utils/checkImported'
-import checkCategory from '../utils/checkCategory'
-import calculateTaxes from '../utils/calculateTaxes'
 import parseProducts from '../utils/parseProducts'
 
 describe('Check if parsing', () => {

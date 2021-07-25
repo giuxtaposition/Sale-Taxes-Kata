@@ -31,28 +31,30 @@ export default class CashRegister {
     this.products = []
   }
 
-  printReceipt() {
+  makeProductList(): string[] {
     let productList: string[] = []
-
     this.products.forEach(product => {
       productList.push(
         `${product.quantity} ${product.name}: ${product.taxedPrice.toFixed(2)}`
       )
     })
+    return productList
+  }
+
+  printReceipt() {
+    let productList: string[] = this.makeProductList()
+    let saleTaxes = this.saleTaxes.toFixed(2)
+    let total = this.total.toFixed(2)
 
     if (process.env.NODE_ENV !== 'test') {
       console.log('Here is your receipt! :)')
       productList.forEach(product => console.log(product))
-      console.log(`Sales Taxes: ${this.saleTaxes.toFixed(2)}`)
-      console.log(`Total: ${this.total.toFixed(2)}`)
+      console.log(`Sales Taxes: ${saleTaxes}`)
+      console.log(`Total: ${total}`)
     }
 
     return (
-      productList.join(' ') +
-      ' Sales Taxes: ' +
-      this.saleTaxes.toFixed(2) +
-      ' Total: ' +
-      this.total.toFixed(2)
+      productList.join(' ') + ' Sales Taxes: ' + saleTaxes + ' Total: ' + total
     )
   }
 }
