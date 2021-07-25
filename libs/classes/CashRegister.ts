@@ -1,44 +1,58 @@
 import Product from './Product'
 
 export default class CashRegister {
-  itemList: string[]
-  total: string
-  saleTaxes: string
+  total: number
+  saleTaxes: number
+  products: Product[]
 
-  constructor(products: Product[]) {
-    let total = 0
-    let saleTaxes = 0
-    let itemList: string[] = []
+  constructor() {
+    this.total = 0
+    this.saleTaxes = 0
+    this.products = []
+  }
+
+  addProduct(product: Product) {
+    this.products.push(product)
+    this.total += product.taxedPrice
+    this.saleTaxes += product.taxApplied
+  }
+
+  addProducts(products: Product[]) {
     products.forEach(product => {
-      let totalPrice = product.taxedPrice
-      itemList.push(
-        `${product.quantity} ${product.name}: ${totalPrice.toFixed(2)}`
-      )
-      total += totalPrice
-      saleTaxes += product.taxApplied
+      this.products.push(product)
+      this.total += product.taxedPrice
+      this.saleTaxes += product.taxApplied
     })
+  }
 
-    this.itemList = itemList
-    this.total = total.toFixed(2)
-    this.saleTaxes = saleTaxes.toFixed(2)
+  resetCashRegister() {
+    this.total = 0
+    this.saleTaxes = 0
+    this.products = []
   }
 
   printReceipt() {
+    let productList: string[] = []
+
+    this.products.forEach(product => {
+      productList.push(
+        `${product.quantity} ${product.name}: ${product.taxedPrice.toFixed(2)}`
+      )
+    })
+
     if (process.env.NODE_ENV !== 'test') {
       console.log('Here is your receipt! :)')
-      this.itemList.forEach(item => {
-        console.log(item)
-      })
-      console.log(`Sales Taxes: ${this.saleTaxes}`)
-      console.log(`Total: ${this.total}`)
+      productList.forEach(product => console.log(product))
+      console.log(`Sales Taxes: ${this.saleTaxes.toFixed(2)}`)
+      console.log(`Total: ${this.total.toFixed(2)}`)
     }
 
     return (
-      this.itemList.join(' ') +
+      productList.join(' ') +
       ' Sales Taxes: ' +
-      this.saleTaxes +
+      this.saleTaxes.toFixed(2) +
       ' Total: ' +
-      this.total
+      this.total.toFixed(2)
     )
   }
 }

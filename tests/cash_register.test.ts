@@ -59,12 +59,14 @@ const tests = [
 ]
 
 describe('Check if cash register gives right output', () => {
+  let register = new CashRegister()
   test('input1 return output1', () => {
     const input = tests[0].input
     const expectedResult = tests[0].output
 
     let products = parseProducts(input)
-    let register = new CashRegister(products)
+    register.resetCashRegister()
+    register.addProducts(products)
     let result = register.printReceipt()
 
     expect(result).toBe(expectedResult)
@@ -75,7 +77,8 @@ describe('Check if cash register gives right output', () => {
     const expectedResult = tests[1].output
 
     let products = parseProducts(input)
-    let register = new CashRegister(products)
+    register.resetCashRegister()
+    register.addProducts(products)
     let result = register.printReceipt()
 
     expect(result).toBe(expectedResult)
@@ -86,7 +89,8 @@ describe('Check if cash register gives right output', () => {
     const expectedResult = tests[2].output
 
     let products = parseProducts(input)
-    let register = new CashRegister(products)
+    register.resetCashRegister()
+    register.addProducts(products)
     let result = register.printReceipt()
 
     expect(result).toBe(expectedResult)

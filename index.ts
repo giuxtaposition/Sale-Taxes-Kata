@@ -16,7 +16,8 @@ const parseArguments = (args: Array<string>): string => {
 try {
   const input = parseArguments(process.argv.slice(2))
   let products = parseProducts(input)
-  let register = new CashRegister(products)
+  let register = new CashRegister()
+  register.addProducts(products)
   register.printReceipt()
 } catch (e) {
   console.log('Error, something bad happened, message: ', (e as Error).message)
