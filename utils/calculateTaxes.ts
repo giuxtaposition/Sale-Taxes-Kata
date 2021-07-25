@@ -10,5 +10,5 @@ export default function calculateTaxes(
   if (category === 'other') {
     taxApplied += price / 10
   }
-  return Math.round((Math.ceil(taxApplied * 20 - 0.5) / 20) * 100) / 100
+  return Math.ceil(taxApplied * 20) / 20
 }

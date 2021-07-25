@@ -27,9 +27,9 @@ export default function parseProducts(input: string): Product[] {
       imported,
       category,
       quantity,
-      price,
-      taxedPrice: Math.round((taxApplied + price) * 100) / 100,
-      taxApplied,
+      price: price * quantity,
+      taxedPrice: (taxApplied + price) * quantity,
+      taxApplied: taxApplied * quantity,
     }
   })
 
