@@ -15,8 +15,8 @@ const parseArguments = (args: Array<string>): string => {
 
 try {
   const input = parseArguments(process.argv.slice(2))
-  let products = parseProducts(input)
-  let register = new CashRegister()
+  const products = parseProducts(input)
+  const register = new CashRegister()
   register.addProducts(products)
   register.printReceipt()
 } catch (e) {

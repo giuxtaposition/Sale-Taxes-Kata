@@ -4,14 +4,14 @@ import calculateTaxes from '../utils/calculateTaxes'
 
 describe('Check if rounding is correct', () => {
   const input = '1 imported bottle of perfume at 47.50'
-  let name = input.substring(input.indexOf(' ') + 1, input.lastIndexOf(' at'))
-  let imported = checkImported(name)
-  let category = checkCategory(name)
-  let price = parseFloat(input.substring(input.lastIndexOf(' ') + 1))
+  const name = input.substring(input.indexOf(' ') + 1, input.lastIndexOf(' at'))
+  const imported = checkImported(name)
+  const category = checkCategory(name)
+  const price = parseFloat(input.substring(input.lastIndexOf(' ') + 1))
 
-  let taxApplied = calculateTaxes(price, imported, category)
+  const taxApplied = calculateTaxes(price, imported, category)
 
-  let taxedPrice = taxApplied + price
+  const taxedPrice = taxApplied + price
 
   test('when calculating tax to be applied', () => {
     const expectedOutput = parseFloat('7.15')
@@ -27,16 +27,19 @@ describe('Check if rounding is correct', () => {
 
     const expectedOutput = '10.50'
 
-    let name = input.substring(input.indexOf(' ') + 1, input.lastIndexOf(' at'))
+    const name = input.substring(
+      input.indexOf(' ') + 1,
+      input.lastIndexOf(' at')
+    )
 
-    let imported = checkImported(name)
+    const imported = checkImported(name)
 
-    let category = checkCategory(name)
-    let price = parseFloat(input.substring(input.lastIndexOf(' ') + 1))
+    const category = checkCategory(name)
+    const price = parseFloat(input.substring(input.lastIndexOf(' ') + 1))
 
-    let taxApplied = calculateTaxes(price, imported, category)
+    const taxApplied = calculateTaxes(price, imported, category)
 
-    let taxedPrice = taxApplied + price
+    const taxedPrice = taxApplied + price
 
     expect(taxedPrice.toFixed(2)).toBe(expectedOutput)
   })

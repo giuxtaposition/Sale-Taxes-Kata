@@ -59,15 +59,15 @@ const tests = [
 ]
 
 describe('Check if cash register gives right output', () => {
-  let register = new CashRegister()
+  const register = new CashRegister()
   test('input1 return output1', () => {
     const input = tests[0].input
     const expectedResult = tests[0].output
 
-    let products = parseProducts(input)
+    const products = parseProducts(input)
     register.resetCashRegister()
     register.addProducts(products)
-    let result = register.printReceipt()
+    const result = register.printReceipt()
 
     expect(result).toBe(expectedResult)
   })
@@ -76,10 +76,10 @@ describe('Check if cash register gives right output', () => {
     const input = tests[1].input
     const expectedResult = tests[1].output
 
-    let products = parseProducts(input)
+    const products = parseProducts(input)
     register.resetCashRegister()
     register.addProducts(products)
-    let result = register.printReceipt()
+    const result = register.printReceipt()
 
     expect(result).toBe(expectedResult)
   })
@@ -88,20 +88,20 @@ describe('Check if cash register gives right output', () => {
     const input = tests[2].input
     const expectedResult = tests[2].output
 
-    let products = parseProducts(input)
+    const products = parseProducts(input)
     register.resetCashRegister()
     register.addProducts(products)
-    let result = register.printReceipt()
+    const result = register.printReceipt()
 
     expect(result).toBe(expectedResult)
   })
 })
 
 describe('Check if cash register prints', () => {
-  let register = new CashRegister()
+  const register = new CashRegister()
   const input = '1 imported bottle of perfume at 27.99'
 
-  let products = parseProducts(input)
+  const products = parseProducts(input)
   register.resetCashRegister()
   register.addProducts(products)
 

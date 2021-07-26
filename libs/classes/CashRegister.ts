@@ -11,13 +11,13 @@ export default class CashRegister {
     this.products = []
   }
 
-  addProduct(product: Product) {
+  addProduct(product: Product): void {
     this.products.push(product)
     this.total += product.taxedPrice
     this.saleTaxes += product.taxApplied
   }
 
-  addProducts(products: Product[]) {
+  addProducts(products: Product[]): void {
     products.forEach(product => {
       this.products.push(product)
       this.total += product.taxedPrice
@@ -25,14 +25,14 @@ export default class CashRegister {
     })
   }
 
-  resetCashRegister() {
+  resetCashRegister(): void {
     this.total = 0
     this.saleTaxes = 0
     this.products = []
   }
 
   makeProductList(): string[] {
-    let productList: string[] = []
+    const productList: string[] = []
     this.products.forEach(product => {
       productList.push(
         `${product.quantity} ${product.name}: ${product.taxedPrice.toFixed(2)}`
@@ -41,10 +41,10 @@ export default class CashRegister {
     return productList
   }
 
-  printReceipt() {
-    let productList: string[] = this.makeProductList()
-    let saleTaxes = this.saleTaxes.toFixed(2)
-    let total = this.total.toFixed(2)
+  printReceipt(): string {
+    const productList: string[] = this.makeProductList()
+    const saleTaxes = this.saleTaxes.toFixed(2)
+    const total = this.total.toFixed(2)
 
     if (process.env.NODE_ENV !== 'test') {
       console.log('Here is your receipt! :)')

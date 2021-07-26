@@ -1,7 +1,7 @@
 import parseProducts from '../utils/parseProducts'
 
 describe('Check if parsing', () => {
-  let products = parseProducts(
+  const products = parseProducts(
     '2 book at 12.49' +
       ' ' +
       '1 music CD at 14.99' +
