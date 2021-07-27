@@ -8,6 +8,7 @@
   - [Table of Contents](#table-of-contents)
   - [Problem](#problem)
   - [Running Locally](#running-locally)
+    - [Using Docker](#using-docker)
   - [Testing](#testing)
   - [License](#license)
 
@@ -80,11 +81,22 @@ Sales Taxes: 1.50
 Total: 42.32
 ```
 
+### Using Docker
+
+``` bash
+git clone https://github.com/giuxtaposition/sale-taxes.git
+cd sale-taxes
+docker build -t giuxtaposition/sale-taxes .
+docker run giuxtaposition/sale-taxes '[myInput]'
+```
+
 ## Testing
 
 ``` bash
 yarn test
 ```
+
+If using Docker, tests will be run automatically while building.
 
 ## License
 
