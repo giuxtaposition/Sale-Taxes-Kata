@@ -70,6 +70,7 @@ yarn start '[myInput]'
 ```
 
 Usage Example:
+(you can divide each item with a whitespace, a comma or a semicolon)
 
 ``` bash
 $ yarn start '2 book at 12.49 1 music CD at 14.99 1 chocolate bar at 0.85'

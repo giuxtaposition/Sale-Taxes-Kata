@@ -4,7 +4,7 @@ import checkImported from './checkImported'
 import calculateTaxes from './calculateTaxes'
 
 export default function parseProducts(input: string): Product[] {
-  const products = input.split(/(?<=\d)\s(?=\d)/)
+  const products = input.split(/(?<=\d)[,; ]+(?=\d)/)
 
   const parsedInput = products.map(product => {
     const name = product.substring(
